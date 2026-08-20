@@ -1,0 +1,4 @@
+import { ArrowRight, CalendarDays, Clock3, MapPin, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import type { Seminar } from '../types/seminar.types';
+export default function SeminarCard({ seminar }: { seminar: Seminar }) { const remaining = seminar.capacity - seminar.reserved; return <article className="seminar-card"><img src={seminar.image} alt=""/><div className="card-body"><span className="pill">{seminar.category}</span><h3>{seminar.title}</h3><div className="event-meta"><span><CalendarDays/> {seminar.date}</span><span><Clock3/> {seminar.time.split('–')[0]}</span><span><MapPin/> {seminar.venue}</span></div><div className="card-footer"><span className={remaining ? 'seats' : 'seats full'}><Users/> {remaining ? `${remaining} seats left` : 'Seminar full'}</span><Link to={`/seminars/${seminar.slug}`} className="text-link">View seminar <ArrowRight/></Link></div></div></article>; }

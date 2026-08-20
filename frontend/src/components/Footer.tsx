@@ -1,0 +1,3 @@
+import { Link } from 'react-router-dom';
+import { Brand } from './Navbar';
+export default function Footer() { return <footer><div className="container footer-grid"><div><div className="footer-brand"><Brand/></div><p>Connecting students through meaningful learning, leadership and community events.</p></div><div><h4>Explore</h4><Link to="/seminars">Upcoming seminars</Link><Link to="/my-events">My events</Link><Link to="/about">About JUSA</Link></div><div><h4>Contact</h4><p>Jamhuriya University of Science & Technology<br/>Mogadishu, Somalia</p></div></div><div className="container footer-bottom">© 2026 Jamhuriya University Students Association.</div></footer>; }

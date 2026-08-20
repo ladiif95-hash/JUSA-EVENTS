@@ -1,0 +1,7 @@
+import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
+import { CheckCircle2, Info, TriangleAlert, X, XCircle } from 'lucide-react';
+type Tone = 'success' | 'error' | 'warning' | 'info'; type Toast = { id: number; tone: Tone; message: string };
+const ToastContext = createContext<{ show: (message: string, tone?: Tone) => void } | undefined>(undefined);
+const icons = { success: CheckCircle2, error: XCircle, warning: TriangleAlert, info: Info };
+export function ToastProvider({ children }: { children: ReactNode }) { const [items, setItems] = useState<Toast[]>([]); const show = (message: string, tone: Tone = 'info') => { const id = Date.now(); setItems(current => [...current, { id, tone, message }]); window.setTimeout(() => setItems(current => current.filter(item => item.id !== id)), 4500); }; const value = useMemo(() => ({ show }), []); return <ToastContext.Provider value={value}>{children}<div className="toast-region" aria-live="polite" aria-atomic="true">{items.map(item => { const Icon = icons[item.tone]; return <div className={`toast toast-${item.tone}`} key={item.id}><Icon/><span>{item.message}</span><button aria-label="Dismiss notification" onClick={() => setItems(current => current.filter(entry => entry.id !== item.id))}><X/></button></div>; })}</div></ToastContext.Provider>; }
+export function useToast() { const context = useContext(ToastContext); if (!context) throw new Error('useToast must be used within ToastProvider'); return context; }

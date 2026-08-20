@@ -1,0 +1,19 @@
+import { Router } from 'express';
+import { adminRouter } from './admin.routes';
+import { authRouter } from './auth.routes';
+import { profileRouter } from './profile.routes';
+import { seminarRouter } from './seminar.routes';
+import { voteRouter } from './vote.routes';
+import { requireAuth } from '../middleware/auth.middleware';
+import * as registration from '../controllers/registration.controller';
+import { asyncHandler } from '../middleware/error.middleware';
+
+export const router = Router();
+router.get('/health', (_request, response) => response.json({ status: 'ok' }));
+router.use('/auth', authRouter);
+router.use('/profile', profileRouter);
+router.use('/seminars', seminarRouter);
+router.use('/votes', voteRouter);
+router.get('/my-events', requireAuth, asyncHandler(registration.myEvents));
+router.get('/registrations/:id/qr', requireAuth, asyncHandler(registration.qrPass));
+router.use('/admin', adminRouter);

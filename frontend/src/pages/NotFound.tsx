@@ -1,0 +1,2 @@
+import { ArrowLeft } from 'lucide-react'; import { Link } from 'react-router-dom';
+export default function NotFound() { return <section className="page container not-found"><span className="eyebrow">404 ERROR</span><h1 className="page-title">This page is not here.</h1><p className="lead">The page may have been moved, removed, or the address may be incorrect.</p><Link to="/" className="button"><ArrowLeft/> Return home</Link></section>; }

@@ -1,0 +1,36 @@
+{
+  "name": "@jusa/backend",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "seed": "tsx src/scripts/seed.ts",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "latest",
+    "express": "latest",
+    "express-rate-limit": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest",
+    "nodemailer": "latest",
+    "qrcode": "latest",
+    "xlsx": "latest",
+    "zod": "latest",
+    "dotenv": "latest",
+    "cors": "latest"
+    ,"cookie-parser": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "tsx": "latest",
+    "@types/express": "latest",
+    "@types/node": "latest",
+    "@types/cors": "latest"
+    ,"@types/jsonwebtoken": "latest"
+    ,"@types/nodemailer": "latest"
+    ,"@types/qrcode": "latest"
+    ,"@types/cookie-parser": "latest"
+  }
+}

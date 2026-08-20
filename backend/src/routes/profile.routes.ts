@@ -1,0 +1,2 @@
+import { Router } from 'express'; import * as controller from '../controllers/profile.controller'; import { requireAuth } from '../middleware/auth.middleware'; import { asyncHandler } from '../middleware/error.middleware';
+export const profileRouter = Router(); profileRouter.get('/', requireAuth, asyncHandler(controller.getProfile)); profileRouter.patch('/', requireAuth, asyncHandler(controller.updateProfile));

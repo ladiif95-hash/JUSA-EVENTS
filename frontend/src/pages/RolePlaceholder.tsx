@@ -1,0 +1,1 @@
+export default function RolePlaceholder({ title }: { title: string }) { return <section className="page container"><span className="eyebrow">AUTHENTICATION TEST ROUTE</span><h1 className="page-title">{title}</h1><p className="lead">You have been redirected successfully based on your account role.</p></section>; }
